@@ -75,7 +75,7 @@ export class SignInComponent implements OnDestroy {
         .pipe(takeUntil(this._endSubcription))
         .subscribe((response) => {
           this._storage.setItem('access-token', response.token);
-          this._router.navigate(['/sign-in']);
+          this._router.navigate(['mail']);
         });
     }
   }
