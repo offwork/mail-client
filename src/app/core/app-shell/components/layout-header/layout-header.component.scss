@@ -1,0 +1,11 @@
+.layout-header {
+
+  width: 100%;
+  background-color: lightblue;
+  border-bottom: solid 1px #333;
+  max-height: 72px;
+
+  .header {
+    display: flex;
+  }
+}
