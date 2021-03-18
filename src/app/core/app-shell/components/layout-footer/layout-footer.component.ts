@@ -7,4 +7,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   host: { class: 'layout-footer' }
 })
-export class LayoutFooterComponent {}
+export class LayoutFooterComponent {
+}

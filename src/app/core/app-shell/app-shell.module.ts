@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LayoutContentComponent } from './components/layout-content/layout-content.component';
-import { LayoutContainerComponent } from './components/layout-container/layout-container.component';
-import { LayoutHeaderComponent } from './components/layout-header/layout-header.component';
-import { LayoutFooterComponent } from './components/layout-footer/layout-footer.component';
+import {
+  LayoutContentComponent,
+  LayoutContainerComponent,
+  LayoutHeaderComponent,
+  LayoutFooterComponent,
+  LayoutSimpleComponent,
+} from './components';
 
 @NgModule({
   declarations: [
@@ -12,6 +15,7 @@ import { LayoutFooterComponent } from './components/layout-footer/layout-footer.
     LayoutContainerComponent,
     LayoutHeaderComponent,
     LayoutFooterComponent,
+    LayoutSimpleComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -19,6 +23,7 @@ import { LayoutFooterComponent } from './components/layout-footer/layout-footer.
     LayoutContainerComponent,
     LayoutHeaderComponent,
     LayoutFooterComponent,
+    LayoutSimpleComponent,
   ],
 })
 export class AppShellModule {}
