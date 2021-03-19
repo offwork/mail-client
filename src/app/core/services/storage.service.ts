@@ -41,8 +41,10 @@ export class StorageService {
   clear() {
     if (this.useLocalStorage) {
       localStorage.clear();
+      return true;
     } else {
       this.memoryStore = {};
+      return false;
     }
   }
 

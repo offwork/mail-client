@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutContentComponent, LayoutSimpleComponent } from './core/app-shell/components';
+import { UserResolve } from './core/services/user.resolve';
 
 const routes: Routes = [{
     path: '', redirectTo: 'mail', pathMatch: 'full'
@@ -14,7 +15,10 @@ const routes: Routes = [{
   }, {
     path: 'mail',
     component: LayoutContentComponent,
-    children: []
+    children: [],
+    resolve: {
+      profile: UserResolve
+    }
   }];
 
 @NgModule({

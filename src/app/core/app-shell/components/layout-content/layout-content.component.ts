@@ -11,7 +11,7 @@ export class LayoutContentComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  
   }
-
 }

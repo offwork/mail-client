@@ -9,6 +9,12 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-sign-in',
   template: `
+    <div>
+      <pre>
+        "email": "eve.holt@reqres.in",
+        "password": "cityslicka"
+      </pre>
+    </div> 
     <form class="login-form" [formGroup]="signInForm" (ngSubmit)="send()">
       <div class="form-fields">
         <input type="email" formControlName="email" />
