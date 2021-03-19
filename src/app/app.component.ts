@@ -17,7 +17,7 @@ export class AppComponent implements OnDestroy {
       .pipe(takeUntil(this._endSubcription))
       .subscribe((auth) => {
         auth
-          ? this._route.navigate(['mail']) 
+          ? this._route.navigate(['mail/inbox']) 
           : this._route.navigate(['sign-in']);
       })
   }

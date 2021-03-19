@@ -10,13 +10,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class LayoutContainerComponent implements OnInit {
   mainMenuList = [{
       label: 'Geleneler',
-      link: '/'
+      link: '/mail/inbox'
     }, {
       label: 'Gonderilenler',
-      link: '/'
+      link: '/mail/send'
     }, {
       label: 'Cop Kutusu',
-      link: '/'
+      link: '/mail/trash'
     }
   ]
   constructor() { }

@@ -15,7 +15,20 @@ const routes: Routes = [{
   }, {
     path: 'mail',
     component: LayoutContentComponent,
-    children: [],
+    children: [
+      {
+        path: 'inbox',
+        loadChildren: () => import('./features/inbox/inbox.module').then(m => m.InboxModule),
+      },
+      {
+        path: 'send',
+        loadChildren: () => import('./features/send/send.module').then(m => m.SendModule),
+      },
+      {
+        path: 'trash',
+        loadChildren: () => import('./features/trash/trash.module').then(m => m.TrashModule),
+      }
+    ],
     resolve: {
       profile: UserResolve
     }
