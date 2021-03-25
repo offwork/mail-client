@@ -8,7 +8,6 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-
   getUserProfile(id: number) {
     return this.http.get<ProfileData>(`${environment.API_URL}/api/users/${id}`);
   }

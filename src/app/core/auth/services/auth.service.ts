@@ -20,7 +20,7 @@ export class AuthService {
     return of(this._storage.clear()).pipe(delay(3000));
   }
 
-  isAuthenticated(): Observable<boolean> {
-    return of(this._storage.hasItem('access-token'));
+  isAuthenticated(): boolean {
+    return this._storage.hasItem('access-token');
   }
 }

@@ -19,4 +19,19 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  .avatar-wrap {
+    cursor: pointer;
+
+    figure {
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid white;
+      height: 48px;
+    
+      img {
+        height: 100%;
+      }
+    }
+  }
 }

@@ -80,7 +80,9 @@ export class SignInComponent implements OnDestroy {
       this._auth.login(this.signInForm.value)
         .pipe(takeUntil(this._endSubcription))
         .subscribe((response) => {
+          const expired = new Date().getTime() + 300000;
           this._storage.setItem('access-token', response.token);
+          this._storage.setItem('token-expired', String(expired));
           this._router.navigate(['mail']);
         });
     }

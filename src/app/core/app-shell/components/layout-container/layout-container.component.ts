@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-layout-container',
@@ -7,11 +7,6 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   host: { class: 'layout-container' }
 })
-export class LayoutContainerComponent implements OnInit {
+export class LayoutContainerComponent {
   @Input() menuList: any[];
-
-  constructor() { }
-
-  ngOnInit() {}
-
 }

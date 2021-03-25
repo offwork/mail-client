@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutSimpleComponent,
-    canActivate: [ AuthGuard ],
     children: [{
       path: 'auth',
       loadChildren: () => import('./core/auth/auth.module').then(m => m.AuthModule),

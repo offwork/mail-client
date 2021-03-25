@@ -5,8 +5,24 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" (click)="clickOnLogout()" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <div class="avatar-wrap" [matMenuTriggerFor]="menu">
+      <figure>
+        <img [src]="profile.data.avatar" alt="">
+      </figure>
+      <!-- <button mat-icon-button class="example-icon" (click)="clickOnLogout()" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Logout App</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>{{ profile.data.email }}</span>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

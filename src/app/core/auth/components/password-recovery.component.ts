@@ -39,7 +39,5 @@ export class PasswordRecoveryComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

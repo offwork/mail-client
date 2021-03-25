@@ -1,5 +1,5 @@
 <div class="content">
-  <app-layout-header></app-layout-header>
+  <app-layout-header [profile]="profile"></app-layout-header>
   <app-layout-container [menuList]="layoutService.getMainMenuList() | async">
     <router-outlet></router-outlet>
   </app-layout-container>
