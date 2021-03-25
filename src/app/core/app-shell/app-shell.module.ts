@@ -8,6 +8,8 @@ import {
   LayoutFooterComponent,
   LayoutSimpleComponent,
 } from './components';
+import { SahredModule } from 'src/app/shared/sahred.module';
+import { LayoutServices } from './components/services/layout.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import {
     LayoutFooterComponent,
     LayoutSimpleComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, SahredModule, RouterModule],
   exports: [
     LayoutContentComponent,
     LayoutContainerComponent,
@@ -25,5 +27,6 @@ import {
     LayoutFooterComponent,
     LayoutSimpleComponent,
   ],
+  providers: [LayoutServices]
 })
 export class AppShellModule {}

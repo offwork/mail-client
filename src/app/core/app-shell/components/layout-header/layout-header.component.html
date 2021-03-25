@@ -1,8 +1,12 @@
-<div class="header">
-  <h3>Erdemir</h3>
-  <p>Erdemir Mail App</p>
-  <div class="profile">
-    <span class="">{{profile.data.first_name}}</span>
-  </div>
-  <button type="button" (click)="clickOnLogout()">Logout</button>
-</div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>My App</span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" (click)="clickOnLogout()" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

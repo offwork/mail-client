@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-layout-container',
@@ -8,17 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   host: { class: 'layout-container' }
 })
 export class LayoutContainerComponent implements OnInit {
-  mainMenuList = [{
-      label: 'Geleneler',
-      link: '/mail/inbox'
-    }, {
-      label: 'Gonderilenler',
-      link: '/mail/send'
-    }, {
-      label: 'Cop Kutusu',
-      link: '/mail/trash'
-    }
-  ]
+  @Input() menuList: any[];
+
   constructor() { }
 
   ngOnInit() {}
