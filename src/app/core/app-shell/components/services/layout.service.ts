@@ -8,14 +8,17 @@ export class LayoutServices {
       {
         label: 'Geleneler',
         link: '/mail/inbox',
+        icon: 'inbox',
       },
       {
         label: 'Gonderilenler',
         link: '/mail/send',
+        icon: 'send',
       },
       {
         label: 'Cop Kutusu',
         link: '/mail/trash',
+        icon: 'delete',
       },
     ]);
   }

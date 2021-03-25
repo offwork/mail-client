@@ -7,10 +7,10 @@ import { UserResolve } from './core/services/user.resolve';
 const routes: Routes = [
   { path: '', redirectTo: 'mail/inbox', pathMatch: 'full' }, 
   {
-    path: '',
+    path: 'auth',
     component: LayoutSimpleComponent,
     children: [{
-      path: 'auth',
+      path: '',
       loadChildren: () => import('./core/auth/auth.module').then(m => m.AuthModule),
     }]
   },

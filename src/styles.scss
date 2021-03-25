@@ -9,5 +9,11 @@ body {
 body {
   width: 100%;
   min-height: 100vh;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  app-root {
+    display: flex;
+    height: 100vh;
+    background-color: lightblue;
+  }
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

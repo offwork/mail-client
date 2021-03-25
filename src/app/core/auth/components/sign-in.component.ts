@@ -9,22 +9,33 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-sign-in',
   template: `
-    <div>
+    <!-- <div>
       <pre>
         "email": "eve.holt@reqres.in",
         "password": "cityslicka"
       </pre>
-    </div> 
+    </div> -->
     <form class="login-form" [formGroup]="signInForm" (ngSubmit)="send()">
-      <div class="form-fields">
-        <input type="email" formControlName="email" />
-      </div>
-      <div class="form-fields">
-        <input type="password" formControlName="password" />
-      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" type="text">
+        <button mat-icon-button matSuffix [attr.aria-label]="'EMail'">
+          <mat-icon>type</mat-icon>
+        </button>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
       <div class="form-button-groups">
-        <button type="button" (click)="reset()">Reset</button>
-        <button type="submit">Send</button>
+        <button mat-flat-button color="accent" type="button" (click)="reset()">Reset</button>
+        <button mat-flat-button color="primary" type="submit">Send</button>
       </div>
     </form>
   `,
@@ -32,7 +43,7 @@ styles: [`
   .login-form {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 0 64px;
   }
   .form-fields {
     margin-bottom: 16px;
@@ -60,6 +71,8 @@ styles: [`
 `]
 })
 export class SignInComponent implements OnDestroy {
+
+  hide = true;
 
   signInForm: FormGroup = this._fb.group({
     email: ['', Validators.required],

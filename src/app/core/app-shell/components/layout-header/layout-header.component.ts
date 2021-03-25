@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Profile } from 'src/app/core/auth/models/pofile';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/core/auth/services/auth.service';
 })
 export class LayoutHeaderComponent implements OnDestroy, AfterViewInit {
   @Input() profile: Profile;
+  @Output() toggleHead = new Subject<void>();
   _endSubscription = new Subject<boolean>();
 
   constructor(
@@ -23,7 +24,11 @@ export class LayoutHeaderComponent implements OnDestroy, AfterViewInit {
   clickOnLogout() {
     this._auth.logout()
       .pipe(takeUntil(this._endSubscription))
-      .subscribe(() => this._router.navigate(['sign-in']));
+      .subscribe(() => this._router.navigate(['auth/sign-in']));
+  }
+
+  toggle() {
+    this.toggleHead.next();
   }
 
   ngAfterViewInit() {

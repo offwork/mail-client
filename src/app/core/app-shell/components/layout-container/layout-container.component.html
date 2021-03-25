@@ -1,12 +1,18 @@
-<div class="container-wrap">
-  <div class="aside">
-    <ul class="menu">
-      <li *ngFor="let item of menuList">
-        <a [routerLink]="[item.link]">{{item.label}}</a>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
+<mat-drawer-container class="container-wrap" autosize>
+  <mat-drawer class="layout-sidenav" mode="side">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let item of menuList">
+         <a matLine [routerLink]="[item.link]">{{ item.label }}</a>
+         <button mat-icon-button (click)="showInfo(link)">
+            <mat-icon>{{item.icon}}</mat-icon>
+         </button>
+      </mat-list-item>
+    </mat-nav-list>
+    
+  </mat-drawer>
+
+  <div class="layou-sidenav-content">
     <ng-content></ng-content>
+    <app-layout-footer class="footer"></app-layout-footer>
   </div>
-</div>
+</mat-drawer-container>

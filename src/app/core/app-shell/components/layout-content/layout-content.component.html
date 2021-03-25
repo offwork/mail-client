@@ -1,7 +1,6 @@
 <div class="content">
-  <app-layout-header [profile]="profile"></app-layout-header>
-  <app-layout-container [menuList]="layoutService.getMainMenuList() | async">
+  <app-layout-header [profile]="profile" (toggleHead)="toggle()"></app-layout-header>
+  <app-layout-container [toggled]="toggle$" [menuList]="layoutService.getMainMenuList() | async">
     <router-outlet></router-outlet>
   </app-layout-container>
-  <app-layout-footer></app-layout-footer>
 </div>

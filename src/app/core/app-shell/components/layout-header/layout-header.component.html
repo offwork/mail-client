@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>My App</span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <span>Erdemir Mail</span>
+    <button mat-icon-button class="example-icon" (click)="toggle()" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span class="example-spacer"></span>
@@ -9,19 +9,15 @@
       <figure>
         <img [src]="profile.data.avatar" alt="">
       </figure>
-      <!-- <button mat-icon-button class="example-icon" (click)="clickOnLogout()" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button> -->
     </div>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
       <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>{{ profile.data.email }}</span>
+      </button>
+      <button mat-menu-item (click)="clickOnLogout()">
         <mat-icon>logout</mat-icon>
         <span>Logout App</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>{{ profile.data.email }}</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>

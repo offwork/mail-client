@@ -1,4 +1,6 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-layout-container',
@@ -7,6 +9,15 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   host: { class: 'layout-container' }
 })
-export class LayoutContainerComponent {
+export class LayoutContainerComponent implements AfterViewInit {
   @Input() menuList: any[];
+  @Input() toggled: Observable<boolean>;
+
+  @ViewChild(MatDrawer, { static: false }) drawer: MatDrawer;
+
+  ngAfterViewInit() {
+    this.toggled.pipe().subscribe((isOpen) => {
+      this.drawer.toggle(isOpen);
+    });
+  }
 }

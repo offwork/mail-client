@@ -6,6 +6,7 @@ import { SignUpComponent } from './components/sign-up.component';
 import { PasswordRecoveryComponent } from './components/password-recovery.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SahredModule } from 'src/app/shared/sahred.module';
 
 
 
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SahredModule,
     AuthRoutingModule,
   ]
 })
