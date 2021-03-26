@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Profile } from 'src/app/core/auth/models/pofile';
 import { AuthService } from 'src/app/core/auth/services/auth.service';

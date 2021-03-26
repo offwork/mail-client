@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, pipe, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { Profile } from 'src/app/core/auth/models/pofile';
 import { LayoutServices } from '../services/layout.service';
 
@@ -17,8 +16,6 @@ export class LayoutContentComponent implements OnInit, OnDestroy {
   _toggle = new BehaviorSubject<boolean>(false);
   toggle$ = this._toggle.asObservable();
   isToggle = false;
-  // menuList: any[] = [];
-  // _endSubcription = new Subject<boolean>();
 
   constructor(public layoutService: LayoutServices, private _activatedRoute: ActivatedRoute) { }
 

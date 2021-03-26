@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './layout-container.component.html',
   styleUrls: ['./layout-container.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'layout-container' }
 })
 export class LayoutContainerComponent implements AfterViewInit {
