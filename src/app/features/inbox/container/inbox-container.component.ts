@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { InboxService } from '../services/inbox.service';
 
 @Component({
   selector: 'app-inbox-container',
@@ -9,9 +10,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class InboxContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor( private service: InboxService ) { }
 
   ngOnInit(): void {
+    this.service.allUsers$.subscribe(console.log);
   }
 
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppShellModule } from './app-shell/app-shell.module';
 import { AuthModule } from './auth/auth.module';
 import { StorageService } from './services/storage.service';
+import { RestClientModule } from './rest-client/rest-client.module';
 
 
 
@@ -12,7 +13,8 @@ import { StorageService } from './services/storage.service';
   imports: [
     CommonModule,
     AppShellModule,
-    AuthModule
+    AuthModule,
+    RestClientModule
   ],
   providers: [ StorageService ]
 })
