@@ -7,20 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { RestClientModule } from './core/rest-client/rest-client.module';
+import { RestClient } from './core/rest-client/rest-client.service';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
     CoreModule,
     RestClientModule.forRoot(),
     AppRoutingModule,
-    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ RestClient ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

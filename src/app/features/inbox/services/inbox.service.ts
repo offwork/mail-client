@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, shareReplay, switchMap } from 'rxjs/operators';
+import { shareReplay, switchMap } from 'rxjs/operators';
 import { RestClient } from 'src/app/core/rest-client/rest-client.service';
 import { Response, User } from '../models/user-response.model';
-import { environment } from '../../../../environments/environment'
 
 
 @Injectable()
@@ -16,9 +14,9 @@ export class InboxService {
     shareReplay(1)
   );
 
-  constructor(private rest: HttpClient) {}
+  constructor(private rest: RestClient) {}
 
   __getUsers(): Observable<Response<User>> {
-    return this.rest.get<Response<User>>(`${environment.API_URL}/api/users?page=2`);
+    return this.rest.request('GET', `api/users?page=2`);
   }
 }
