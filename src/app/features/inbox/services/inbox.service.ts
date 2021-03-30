@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
-import { RestClient } from 'src/app/core/rest-client/rest-client.service';
+import { RestClient } from '@core/rest-client';
 import { Response, User } from '../models/user-response.model';
-
 
 @Injectable()
 export class InboxService {

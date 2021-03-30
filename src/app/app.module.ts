@@ -5,9 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { RestClientModule } from './core/rest-client/rest-client.module';
-import { RestClient } from './core/rest-client/rest-client.service';
+import { CoreModule } from '@core/core.module';
+import { RestClient, RestClientModule } from '@core/rest-client';
 
 @NgModule({
   declarations: [

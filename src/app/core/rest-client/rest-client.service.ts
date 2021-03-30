@@ -1,11 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { from, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BaseApi } from './base-api';
-
-import { environment } from '../../../environments/environment';
-
+import { environment } from '@env/environment';
 @Injectable()
 export class RestClient extends BaseApi {
   constructor(@Inject(HttpClient) private httpClient: HttpClient) {
@@ -18,7 +16,9 @@ export class RestClient extends BaseApi {
 
     return this.httpClient.request(method, `${apiBaseUrl}/${url}`, {
       body: body,
-      headers: new HttpHeaders(),
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
       params: param,
       observe: 'body',
       reportProgress: false,

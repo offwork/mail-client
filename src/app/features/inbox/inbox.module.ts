@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { InboxContainerComponent } from './container/inbox-container.component';
 import { InboxService } from './services/inbox.service';
-import { RestClientModule } from 'src/app/core/rest-client/rest-client.module';
 
 
 const inboxRoutes: Routes = [
@@ -18,7 +17,6 @@ const inboxRoutes: Routes = [
   declarations: [ InboxContainerComponent ],
   imports: [
     CommonModule,
-    RestClientModule,
     RouterModule.forChild(inboxRoutes)
   ],
   exports: [RouterModule],

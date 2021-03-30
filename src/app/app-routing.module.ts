@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutContentComponent, LayoutSimpleComponent } from './core/app-shell/components';
-import { AuthGuard } from './core/auth/guards/auth.guard';
-import { UserResolve } from './core/services/user.resolve';
+import { LayoutContentComponent, LayoutSimpleComponent } from '@core/app-shell/components';
+import { AuthGuard } from '@core/auth/guards/auth.guard';
+import { UserResolve } from '@core/services/user.resolve';
 
 const routes: Routes = [
   { path: '', redirectTo: 'mail/inbox', pathMatch: 'full' }, 
