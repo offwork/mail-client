@@ -1,1 +1,23 @@
-<p>inbox-container works!</p>
+<mat-tab-group>
+  <mat-tab label="First">
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let column of columnDefs">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rowDdata">
+          <td>{{row.id}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.first_name}}</td>
+          <td>{{row.last_name}}</td>
+          <td>{{row.avatar}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>
+

@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { User } from '../models/user-response.model';
 import { InboxService } from '../services/inbox.service';
 
 @Component({
@@ -8,12 +11,26 @@ import { InboxService } from '../services/inbox.service';
   encapsulation: ViewEncapsulation.None,
   host: { class: 'app-inbox-container' }
 })
-export class InboxContainerComponent implements OnInit {
+export class InboxContainerComponent implements OnDestroy, OnInit {
+  _endSubcription = new Subject<boolean>();
+
+  columnDefs: string[] = [];
+  rowDdata: User[] = [];
 
   constructor( private service: InboxService ) { }
 
-  ngOnInit(): void {
-    this.service.allUsers$.subscribe(console.log);
+  ngOnInit() {
+    this.service.allUsers$
+      .pipe(takeUntil(this._endSubcription))
+      .subscribe((response) => {
+        this.rowDdata = response.data;
+        this.columnDefs = Object.keys(response.data[0])
+          .map((key) => key.toUpperCase());
+      });
   }
 
+  ngOnDestroy() {
+    this._endSubcription.next(true);
+    this._endSubcription.complete();
+  }
 }

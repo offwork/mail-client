@@ -27,10 +27,6 @@ export class LayoutHeaderComponent implements OnDestroy, AfterViewInit {
       .subscribe(() => this._router.navigate(['auth/sign-in']));
   }
 
-  toggle() {
-    this.toggleHead.next();
-  }
-
   ngAfterViewInit() {
     console.log('Profile: ', this.profile);
   }

@@ -4,6 +4,12 @@ export interface Response<T> {
   total: number;
   total_pages: number;
   data?: Array<T>;
+  support?: Support;
+}
+
+export interface Support {
+  text: string;
+  url: string;
 }
 
 export interface User {
