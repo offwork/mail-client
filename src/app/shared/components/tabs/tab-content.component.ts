@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-tab-content',
   template: `
-    <div class="tab-content" [hidden]="!isActive">
+    <div class="tab-content" [ngClass]="{'toggled': toggle }" [hidden]="!isActive">
       <ng-content></ng-content>
     </div>
   `,
@@ -14,9 +15,13 @@ import { Component } from '@angular/core';
         border-top: none;
         padding: 5px;
       }
+      .toggled {
+        background-color: #eeffcb;
+      }
     `,
   ],
 })
 export class TabContentComponent {
   isActive: boolean = false;
+  @Input() toggle = false;
 }

@@ -17,6 +17,8 @@ export class InboxContainerComponent implements OnDestroy, OnInit {
   columnDefs: string[] = [];
   rowDdata: User[] = [];
 
+  toggled = false;
+
   constructor( private service: InboxService ) { }
 
   tabChanged(tab) {

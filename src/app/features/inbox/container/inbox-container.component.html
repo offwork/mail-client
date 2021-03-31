@@ -1,6 +1,6 @@
 <app-tabs (changed)="tabChanged($event)">
-  <app-tab-title>Tab 1</app-tab-title>
-  <app-tab-content>
+  <app-tab-title [icon]="'home'">Tab 1</app-tab-title>
+  <app-tab-content [toggle]="toggled">
     <table>
       <thead>
         <tr>
@@ -18,6 +18,10 @@
       </tbody>
     </table>
   </app-tab-content>
-  <app-tab-title>Tab 2</app-tab-title>
-  <app-tab-content>Content 2</app-tab-content>
+  <app-tab-title  [icon]="'favorite'">Tab 2</app-tab-title>
+  <app-tab-content [toggle]="toggled">
+    <h3>Content 2</h3>
+  </app-tab-content>
 </app-tabs>
+
+<button matButton color="accent" (click)="toggled = !toggled">Toggle</button>

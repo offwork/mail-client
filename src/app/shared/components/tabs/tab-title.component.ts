@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tab-title',
   template: `
     <div class="tab-title" (click)="handleClick()">
-      <ng-content></ng-content>
+      <div class="title-wrap">
+        <mat-icon>{{icon}}</mat-icon> <ng-content></ng-content>
+      </div> 
     </div>
   `,
   styles: [
@@ -22,6 +24,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class TabTitleComponent {
   @Output('selected')
   tabSelected: EventEmitter<TabTitleComponent> = new EventEmitter<TabTitleComponent>();
+
+  @Input() icon: string;
 
   handleClick() {
     this.tabSelected.emit(this);
