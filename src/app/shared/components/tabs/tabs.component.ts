@@ -1,53 +1,68 @@
-import { AfterContentInit, Component, ContentChild, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';
-import { TabDirective } from '@shared/directives/tab.directive';
-import { TabComponent } from './tab.component';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Output,
+  QueryList,
+} from '@angular/core';
+import { TabContentComponent } from './tab-content.component';
+import { TabTitleComponent } from './tab-title.component';
 
 @Component({
   selector: 'app-tabs',
   template: `
-    <ng-container *ngTemplateOutlet="tabsTemplate">
-      <ul class="nav nav-tabs">
-        <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-          <a href="#"></a>
-        </li>
-      </ul>
-      <ng-content></ng-content>
-    </ng-container>
-    <ng-template #emptyTemplate></ng-template>
+    <div class="tab">
+      <div class="tab-nav">
+        <ng-content select="app-tab-title"></ng-content>
+      </div>
+      <ng-content select="app-tab-content"></ng-content>
+    </div>
   `,
   styles: [
     `
-      .tab-close {
-        color: gray;
-        text-align: right;
-        cursor: pointer;
+      :host {
+        display: flex;
       }
-    `
+      .tab {
+        flex: 1 1 100%;
+      }
+      .tab-nav {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: 100%;
+        background: #eee;
+      }
+    `,
   ],
 })
 export class TabsComponent implements AfterContentInit {
-  @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-  @ContentChild(TabDirective) tabDirective: TabDirective;
-  @ViewChild('emptyTemplate', { static: true }) emptyTemplate: any;
+  @Output('changed')
+  tabChanged: EventEmitter<number> = new EventEmitter<number>();
 
+  @ContentChildren(TabTitleComponent) tabTitles: QueryList<TabTitleComponent>;
 
-  templateContext = {
-    selectTab: (tab) => {}
-  };
+  @ContentChildren(TabContentComponent)
+  tabContents: QueryList<TabContentComponent>;
 
-  get tabsTemplate(): TemplateRef<any> {
-    return this.tabDirective && this.tabDirective.template || this.emptyTemplate;
+  active: number;
+
+  select(index: number) {
+    let contents: TabContentComponent[] = this.tabContents.toArray();
+    contents[this.active].isActive = false;
+    this.active = index;
+    contents[this.active].isActive = true;
+    this.tabChanged.emit(index);
   }
 
   ngAfterContentInit() {
-    const activeTabs = this.tabs.toArray().filter((tab)=>tab.active);
-    if(activeTabs.length === 0) {
-      this.templateContext.selectTab = this.selectTab.bind(this.selectTab, this.tabs.first);
-    }
-  }
-
-  selectTab(tab: any){
-    this.tabs.toArray().forEach(tab => tab.active = false);    
-    tab.active = true;
+    this.tabTitles
+      .map((t) => t.tabSelected)
+      .forEach((t, i) => {
+        t.subscribe((_) => {
+          this.select(i);
+        });
+      });
+    this.active = 0;
+    this.select(0);
   }
 }

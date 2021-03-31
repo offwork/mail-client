@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
+import { TabsModule } from './components/tabs/tabs.module';
 import { DesignModule } from './design/design.module';
-import { TabComponent } from './components/tabs/tab.component';
-import { TabsComponent } from './components/tabs/tabs.component';
-import { TabDirective } from './directives/tab.directive';
 
 @NgModule({
-  imports: [ DesignModule ],
-  exports: [ DesignModule, TabComponent, TabsComponent, TabDirective ],
-  declarations: [TabComponent, TabsComponent, TabDirective],
+  imports: [DesignModule, TabsModule],
+  exports: [DesignModule, TabsModule],
 })
 export class SahredModule {}

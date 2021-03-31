@@ -19,6 +19,10 @@ export class InboxContainerComponent implements OnDestroy, OnInit {
 
   constructor( private service: InboxService ) { }
 
+  tabChanged(tab) {
+    console.log(tab);
+  }
+
   ngOnInit() {
     this.service.allUsers$
       .pipe(takeUntil(this._endSubcription))
